@@ -1,0 +1,235 @@
+---
+title: "Project1 - Hyunji Park"
+subtitle: Stat133, Spring 2022
+output:
+  pdf_document: default
+  html_document: default
+---
+
+## A) Data IBTrACS
+
+### A.1) Recommended R Packages
+```{r}
+library(tidyverse)
+library(lubridate)
+library(spData)
+library(gganimate)
+```
+
+### A.2) Importing Data in R
+```{r}
+column_names <- c("SID", "SEASON", "NUMBER", "BASIN", "SUBBASIN", "NAME", "ISO_TIME", "NATURE", "LAT", "LON", "WMO_WIND", "WMO_PRES", "WMO_AGENCY", "TRACK_TYPE", "DIST2LAND", "LANDFALL")
+column_types <- c("character", "integer", "integer", "character", "character", "character", "character", "character", "double", "double", "integer", "integer", "character", "character", "integer", "integer")
+
+dat <- read.csv("ibtracs.NA.list.v04r00.csv", colClasses = c(column_types, rep("NULL", 147)), stringsAsFactors = FALSE, skip = 77876, na.strings = " ")
+
+dat <- select(dat, c(1:16))
+
+colnames(dat) <- column_names
+```
+
+### A.3) Adding a MONTH column
+```{r}
+dat$ISO_TIME = as.POSIXct(dat$ISO_TIME)
+dat$MONTH <- lubridate::month(dat$ISO_TIME)
+
+str(dat, vec.len = 1)
+```
+
+## B) Univariate Exploratory Data Analysis
+```{r echo = FALSE, results = "hide", warning = FALSE}
+# map "canvas" stored as gg_world
+world_map <- map_data("world")
+
+gg_world <- ggplot() + 
+  geom_polygon(data = world_map, 
+               aes(x = long, y = lat, group = group), 
+               fill = "gray95", colour = "gray70", size = 0.2) +
+  theme_bw()
+
+# 
+gg_world + geom_point(data = dat, aes(x = LON, y = LAT, color = BASIN))
+
+#
+max_avg_wind <- dat %>%
+  group_by(BASIN, NAME) %>%
+  summarise(
+    max_wind = max(WMO_WIND, na.rm = TRUE),
+    avg_wind = mean(WMO_WIND, na.rm = TRUE)
+  )
+ggplot(max_avg_wind, aes(max_wind, color = BASIN)) + geom_density(aes(fill = BASIN), alpha = 0.5)
+ggplot(max_avg_wind, aes(avg_wind, color = BASIN)) + geom_density(aes(fill = BASIN), alpha = 0.5)
+```
+Only NA and EP exist in the BASIN column of this data. Comparing these two, the locations where NA and EP pass are different and the distribution is different. Most of the storms in EP pass through the western United States, and the storms in NA pass through much more areas than EP, as shown on the map. In addition, the graph shows that the distribution of the maximum wind speed is different. Overall, the maximum wind speed of the EP storm is skewed to the slower side than 40, and the higher the wind speed, the smaller the distribution. NA's storm maximum wind speed is most evenly distributed between 40-140. Therefore, it can be seen that the distribution of the average wind speed EP is concentrated on a lower side than the distribution of NA.
+
+## C1) Atlantic Hurricane Seasons
+
+### C1.a)
+```{r}
+# The 2020 Atlantic hurricane season
+atlantic_2020 <- dat %>%
+  filter(SEASON == 2020 & (BASIN == "NA"))
+
+# Total number of tropical cyclones
+atlantic_2020 %>%
+  distinct(NAME) %>%
+  nrow
+
+# Number of named storms
+atlantic_2020 %>%
+  filter(NAME != "NOT_NAMED") %>%
+  distinct(NAME) %>%
+  nrow
+
+# The month when tropical cyclones are formed
+atlantic_2020 %>%
+  distinct(MONTH)
+
+```
+There are a total of 31 tropical cyclones generated in Atlantic in 2020. In this data, "NOT_NAMED" means a storm not named. Therefore, in order to find only the named storm, it is necessary to make data except for the row with the storm "NOT_NAMED" in the NAME column. Since the number of tropical cyclones other than “NOT_NAMED” is 30, only one of the 31 has no name. The official Atlantic hurricane season runs from June through November, but this data also includes May, so there is a tropical cyclone formed in pre-season. Therefore, **a) is false**.
+
+### C1.b)
+```{r}
+# Arranging the names in the order of the maximum wind speed of each tropical cyclone
+max_wind_2020 <- atlantic_2020 %>%
+  group_by(NAME) %>%
+  summarise(
+    max_wind = max(WMO_WIND, na.rm = TRUE)
+  )
+
+# Number of major hurricanes (Category 3, 4, 5)
+max_wind_2020 %>%
+  filter(max_wind > 110) %>%
+  nrow
+
+# Number of category 5
+max_wind_2020 %>%
+  filter(max_wind >= 157) %>%
+  nrow
+```
+Saffir-Simpson Hurricane Wind Scale is a 1 to 5 rating based on a hurricane’s sustained wind speed:
+
+* Category 1: 74-95 mph; 64-82 kt; 119-153 km/h
+* Category 2: 96-110 mph; 83-95 kt; 154-177 km/h
+* Category 3: 111-129 mph; 96-112 kt; 178-208 km/h
+* Category 4: 130-156 mph; 113-136 kt; 209-251 km/h
+* Category 5: 157 mph or higher; 137 kt or higher; 252 km/h or higher
+
+Major hurricanes are defined as Category 3, 4, and 5 storms, so he wind speed of a major hurricane must be above 110. The 2020 Atlantic hurricane, the number of major hurricanes is 5, so **b) is false**. However, true that none of the major hurricanes reach category 5. because there was no tropical cyclone with a wind speed of 157 or higher.
+
+### C1.c)
+```{r}
+# The 2010 Atlantic hurricane season
+atlantic_2010 <- dat %>%
+  filter(SEASON == 2010 & (BASIN == "NA"))
+
+# Total number of named storms
+atlantic_2010 %>%
+  filter(NAME != "NOT_NAMED") %>%
+  distinct(NAME) %>%
+  nrow
+
+#The number of hurricanes that hit the United States
+atlantic_2010 %>%
+  filter(LAT >= 24 & LAT <= 48 & LON >= 67 & LON <= 125) %>%
+  distinct(NAME) %>%
+  nrow
+```
+There are a total of 19 named storms that occurred in Atlantic in 2010. When Alaska and Hawaii were excepted, the location of the United States was within the 24 to 48 degrees  latitude and 67 to 125 degrees longitude. However, among the 19 storms, there was no storm that entered this position. Therefore, **c) is true**.
+
+### C1.d)
+```{r}
+# The 2005 Atlantic hurricane season
+atlantic_2005 <- dat %>%
+  filter(SEASON == 2005 & (BASIN == "NA"))
+
+# Total number of named storms
+atlantic_2005 %>%
+  filter(NAME != "NOT_NAMED") %>%
+  distinct(NAME) %>%
+  nrow
+
+# Arranging the names in the order of the maximum wind speed of each tropical cyclone
+max_wind_2005 <- atlantic_2005 %>%
+  group_by(NAME) %>%
+  summarise(
+    max_wind = max(WMO_WIND, na.rm = TRUE)
+  ) %>%
+  arrange(max_wind)
+
+# Number of major hurricanes (Category 3, 4, 5)
+max_wind_2005 %>%
+  filter(max_wind > 110) %>%
+  nrow
+
+# The period 1970-2020 Atlantic hurricane season
+atlantic_70_20 <- dat %>%
+  filter(SEASON != 2021 & (BASIN == "NA"))
+
+# The number of major hurricanes during the period 1970-2020
+atlantic_70_20 %>%
+  filter(WMO_WIND > 110) %>%
+  group_by(SEASON, NAME) %>%
+  summarise(
+    max_wind = max(WMO_WIND, na.rm = TRUE)
+  ) %>%
+  count(SEASON) %>%
+  arrange(desc(n))
+```
+The 2005 Atlantic hurricane season featured a total of 27 named storms. In 2005, only 5 storms became major hurricanes, so **d) is false** .This 5 storms was the most number of major hurricanes during the period 1970-2020. However, the number of major hurricanes in 2005 is not unique, because the number of major hurricanes in 2005 and the number of major hurricanes in 1999 and 2020 are the same.
+
+### C1.e)
+```{r warning = FALSE}
+# In the period from 1970 to 2020, the number of storms in the main season for each year.
+atlantic_70_20 %>%
+  filter(MONTH == c(6:10) & NAME != "NOT_NAMED") %>% # There can be several not named storms, so remove them
+  group_by(SEASON, NAME) %>%
+  summarise(
+    avg_month = mean(MONTH) # The process of bringing storms of the same name together
+  ) %>%
+  count(SEASON) %>%
+  arrange(desc(n))
+```
+The official Atlantic hurricane season runs from June through November. Arrange the number of storms that occurred from June to October every year. The 2020 Atlantic hurricane season was the most active on record which was 25, so **e) is true**.
+
+### c1.f)
+```{r}
+# Total number of tropical cyclones in 2020
+atlantic_2020 %>%
+  distinct(NAME) %>%
+  nrow
+
+# The number of hurricanes in 2020
+atlantic_2020 %>%
+  filter(WMO_WIND >= 74) %>%
+  distinct(NAME) %>%
+  nrow
+
+# The number of hurricanes in each year during the period 1970 to 2020
+atlantic_70_20 %>%
+  filter(WMO_WIND >= 74 & NAME != "NOT_NAMED") %>% # There can be several not named storms, so remove them
+  group_by(SEASON, NAME) %>%
+  summarise(
+    max_wind = max(WMO_WIND, na.rm = TRUE)
+  ) %>%
+  count(SEASON) %>%
+  arrange(desc(n))
+```
+Hurricanes are tropical cyclones whose sustained winds have reached 74 mph. Total number of tropical cyclones in 2020 was 31, but only 11 storms to be hurricanes, so **f)is false**. The number of hurricanes in 2020 was the most number of hurricanes during the period 1970 to 2020, but not unique. The number of hurricanes in 2005 and 2010 also 11.
+
+### C.2)
+```{r}
+# Remove NA rows in LAT, LON, WMO_WIND columns
+no_NA_2020 <- atlantic_2020[!is.na(atlantic_2020$LAT), ]
+no_NA_2020 <- atlantic_2020[!is.na(atlantic_2020$LON), ]
+no_NA_2020 <- atlantic_2020[!is.na(atlantic_2020$WMO_WIND), ]
+
+# World map, adding storms in 2020 and using wind values to change the size of dots
+plot_2020 <- gg_world + 
+  geom_point(data = no_NA_2020, aes(x = LON, y = LAT, color = NAME, size = WMO_WIND), alpha = 0.5) +
+  xlim(c(-150, 50)) + ylim(c(0, 100))
+
+# Display their paths of the storm over time
+plot_2020 +
+  transition_states(ISO_TIME, transition_length = 2, state_length = 1)
+```
