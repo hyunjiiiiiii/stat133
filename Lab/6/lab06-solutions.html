@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style type="text/css">
+@font-face {
+font-family: octicons-link;
+src: url(data:font/woff;charset=utf-8;base64,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) format('woff');
+}
+body {
+-webkit-text-size-adjust: 100%;
+text-size-adjust: 100%;
+color: #333;
+font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+font-size: 16px;
+line-height: 1.6;
+word-wrap: break-word;
+}
+a {
+background-color: transparent;
+}
+a:active,
+a:hover {
+outline: 0;
+}
+strong {
+font-weight: bold;
+}
+h1 {
+font-size: 2em;
+margin: 0.67em 0;
+}
+img {
+border: 0;
+}
+hr {
+box-sizing: content-box;
+height: 0;
+}
+pre {
+overflow: auto;
+}
+code,
+kbd,
+pre {
+font-family: monospace, monospace;
+font-size: 1em;
+}
+input {
+color: inherit;
+font: inherit;
+margin: 0;
+}
+html input[disabled] {
+cursor: default;
+}
+input {
+line-height: normal;
+}
+input[type="checkbox"] {
+box-sizing: border-box;
+padding: 0;
+}
+table {
+border-collapse: collapse;
+border-spacing: 0;
+}
+td,
+th {
+padding: 0;
+}
+* {
+box-sizing: border-box;
+}
+input {
+font: 13px / 1.4 Helvetica, arial, nimbussansl, liberationsans, freesans, clean, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+a {
+color: #4078c0;
+text-decoration: none;
+}
+a:hover,
+a:active {
+text-decoration: underline;
+}
+hr {
+height: 0;
+margin: 15px 0;
+overflow: hidden;
+background: transparent;
+border: 0;
+border-bottom: 1px solid #ddd;
+}
+hr:before {
+display: table;
+content: "";
+}
+hr:after {
+display: table;
+clear: both;
+content: "";
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+margin-top: 15px;
+margin-bottom: 15px;
+line-height: 1.1;
+}
+h1 {
+font-size: 30px;
+}
+h2 {
+font-size: 21px;
+}
+h3 {
+font-size: 16px;
+}
+h4 {
+font-size: 14px;
+}
+h5 {
+font-size: 12px;
+}
+h6 {
+font-size: 11px;
+}
+blockquote {
+margin: 0;
+}
+ul,
+ol {
+padding: 0;
+margin-top: 0;
+margin-bottom: 0;
+}
+ol ol,
+ul ol {
+list-style-type: lower-roman;
+}
+ul ul ol,
+ul ol ol,
+ol ul ol,
+ol ol ol {
+list-style-type: lower-alpha;
+}
+dd {
+margin-left: 0;
+}
+code {
+font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+font-size: 12px;
+}
+pre {
+margin-top: 0;
+margin-bottom: 0;
+font: 12px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+}
+.select::-ms-expand {
+opacity: 0;
+}
+.octicon {
+font: normal normal normal 16px/1 octicons-link;
+display: inline-block;
+text-decoration: none;
+text-rendering: auto;
+-webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale;
+-webkit-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+user-select: none;
+}
+.octicon-link:before {
+content: '\f05c';
+}
+.markdown-body:before {
+display: table;
+content: "";
+}
+.markdown-body:after {
+display: table;
+clear: both;
+content: "";
+}
+.markdown-body>*:first-child {
+margin-top: 0 !important;
+}
+.markdown-body>*:last-child {
+margin-bottom: 0 !important;
+}
+a:not([href]) {
+color: inherit;
+text-decoration: none;
+}
+.anchor {
+display: inline-block;
+padding-right: 2px;
+margin-left: -18px;
+}
+.anchor:focus {
+outline: none;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+margin-top: 1em;
+margin-bottom: 16px;
+font-weight: bold;
+line-height: 1.4;
+}
+h1 .octicon-link,
+h2 .octicon-link,
+h3 .octicon-link,
+h4 .octicon-link,
+h5 .octicon-link,
+h6 .octicon-link {
+color: #000;
+vertical-align: middle;
+visibility: hidden;
+}
+h1:hover .anchor,
+h2:hover .anchor,
+h3:hover .anchor,
+h4:hover .anchor,
+h5:hover .anchor,
+h6:hover .anchor {
+text-decoration: none;
+}
+h1:hover .anchor .octicon-link,
+h2:hover .anchor .octicon-link,
+h3:hover .anchor .octicon-link,
+h4:hover .anchor .octicon-link,
+h5:hover .anchor .octicon-link,
+h6:hover .anchor .octicon-link {
+visibility: visible;
+}
+h1 {
+padding-bottom: 0.3em;
+font-size: 2.25em;
+line-height: 1.2;
+border-bottom: 1px solid #eee;
+}
+h1 .anchor {
+line-height: 1;
+}
+h2 {
+padding-bottom: 0.3em;
+font-size: 1.75em;
+line-height: 1.225;
+border-bottom: 1px solid #eee;
+}
+h2 .anchor {
+line-height: 1;
+}
+h3 {
+font-size: 1.5em;
+line-height: 1.43;
+}
+h3 .anchor {
+line-height: 1.2;
+}
+h4 {
+font-size: 1.25em;
+}
+h4 .anchor {
+line-height: 1.2;
+}
+h5 {
+font-size: 1em;
+}
+h5 .anchor {
+line-height: 1.1;
+}
+h6 {
+font-size: 1em;
+color: #777;
+}
+h6 .anchor {
+line-height: 1.1;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table,
+pre {
+margin-top: 0;
+margin-bottom: 16px;
+}
+hr {
+height: 4px;
+padding: 0;
+margin: 16px 0;
+background-color: #e7e7e7;
+border: 0 none;
+}
+ul,
+ol {
+padding-left: 2em;
+}
+ul ul,
+ul ol,
+ol ol,
+ol ul {
+margin-top: 0;
+margin-bottom: 0;
+}
+li>p {
+margin-top: 16px;
+}
+dl {
+padding: 0;
+}
+dl dt {
+padding: 0;
+margin-top: 16px;
+font-size: 1em;
+font-style: italic;
+font-weight: bold;
+}
+dl dd {
+padding: 0 16px;
+margin-bottom: 16px;
+}
+blockquote {
+padding: 0 15px;
+color: #777;
+border-left: 4px solid #ddd;
+}
+blockquote>:first-child {
+margin-top: 0;
+}
+blockquote>:last-child {
+margin-bottom: 0;
+}
+table {
+display: block;
+width: 100%;
+overflow: auto;
+word-break: normal;
+word-break: keep-all;
+}
+table th {
+font-weight: bold;
+}
+table th,
+table td {
+padding: 6px 13px;
+border: 1px solid #ddd;
+}
+table tr {
+background-color: #fff;
+border-top: 1px solid #ccc;
+}
+table tr:nth-child(2n) {
+background-color: #f8f8f8;
+}
+img {
+max-width: 100%;
+box-sizing: content-box;
+background-color: #fff;
+}
+code {
+padding: 0;
+padding-top: 0.2em;
+padding-bottom: 0.2em;
+margin: 0;
+font-size: 85%;
+background-color: rgba(0,0,0,0.04);
+border-radius: 3px;
+}
+code:before,
+code:after {
+letter-spacing: -0.2em;
+content: "\00a0";
+}
+pre>code {
+padding: 0;
+margin: 0;
+font-size: 100%;
+word-break: normal;
+white-space: pre;
+background: transparent;
+border: 0;
+}
+.highlight {
+margin-bottom: 16px;
+}
+.highlight pre,
+pre {
+padding: 16px;
+overflow: auto;
+font-size: 85%;
+line-height: 1.45;
+background-color: #f7f7f7;
+border-radius: 3px;
+}
+.highlight pre {
+margin-bottom: 0;
+word-break: normal;
+}
+pre {
+word-wrap: normal;
+}
+pre code {
+display: inline;
+max-width: initial;
+padding: 0;
+margin: 0;
+overflow: initial;
+line-height: inherit;
+word-wrap: normal;
+background-color: transparent;
+border: 0;
+}
+pre code:before,
+pre code:after {
+content: normal;
+}
+kbd {
+display: inline-block;
+padding: 3px 5px;
+font-size: 11px;
+line-height: 10px;
+color: #555;
+vertical-align: middle;
+background-color: #fcfcfc;
+border: solid 1px #ccc;
+border-bottom-color: #bbb;
+border-radius: 3px;
+box-shadow: inset 0 -1px 0 #bbb;
+}
+.pl-c {
+color: #969896;
+}
+.pl-c1,
+.pl-s .pl-v {
+color: #0086b3;
+}
+.pl-e,
+.pl-en {
+color: #795da3;
+}
+.pl-s .pl-s1,
+.pl-smi {
+color: #333;
+}
+.pl-ent {
+color: #63a35c;
+}
+.pl-k {
+color: #a71d5d;
+}
+.pl-pds,
+.pl-s,
+.pl-s .pl-pse .pl-s1,
+.pl-sr,
+.pl-sr .pl-cce,
+.pl-sr .pl-sra,
+.pl-sr .pl-sre {
+color: #183691;
+}
+.pl-v {
+color: #ed6a43;
+}
+.pl-id {
+color: #b52a1d;
+}
+.pl-ii {
+background-color: #b52a1d;
+color: #f8f8f8;
+}
+.pl-sr .pl-cce {
+color: #63a35c;
+font-weight: bold;
+}
+.pl-ml {
+color: #693a17;
+}
+.pl-mh,
+.pl-mh .pl-en,
+.pl-ms {
+color: #1d3e81;
+font-weight: bold;
+}
+.pl-mq {
+color: #008080;
+}
+.pl-mi {
+color: #333;
+font-style: italic;
+}
+.pl-mb {
+color: #333;
+font-weight: bold;
+}
+.pl-md {
+background-color: #ffecec;
+color: #bd2c00;
+}
+.pl-mi1 {
+background-color: #eaffea;
+color: #55a532;
+}
+.pl-mdr {
+color: #795da3;
+font-weight: bold;
+}
+.pl-mo {
+color: #1d3e81;
+}
+kbd {
+display: inline-block;
+padding: 3px 5px;
+font: 11px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+line-height: 10px;
+color: #555;
+vertical-align: middle;
+background-color: #fcfcfc;
+border: solid 1px #ccc;
+border-bottom-color: #bbb;
+border-radius: 3px;
+box-shadow: inset 0 -1px 0 #bbb;
+}
+.task-list-item {
+list-style-type: none;
+}
+.task-list-item+.task-list-item {
+margin-top: 3px;
+}
+.task-list-item input {
+margin: 0 0.35em 0.25em -1.6em;
+vertical-align: middle;
+}
+:checked+.radio-label {
+z-index: 1;
+position: relative;
+border-color: #4078c0;
+}
+.sourceLine {
+display: inline-block;
+}
+code .kw { color: #000000; }
+code .dt { color: #ed6a43; }
+code .dv { color: #009999; }
+code .bn { color: #009999; }
+code .fl { color: #009999; }
+code .ch { color: #009999; }
+code .st { color: #183691; }
+code .co { color: #969896; }
+code .ot { color: #0086b3; }
+code .al { color: #a61717; }
+code .fu { color: #63a35c; }
+code .er { color: #a61717; background-color: #e3d2d2; }
+code .wa { color: #000000; }
+code .cn { color: #008080; }
+code .sc { color: #008080; }
+code .vs { color: #183691; }
+code .ss { color: #183691; }
+code .im { color: #000000; }
+code .va {color: #008080; }
+code .cf { color: #000000; }
+code .op { color: #000000; }
+code .bu { color: #000000; }
+code .ex { color: #000000; }
+code .pp { color: #999999; }
+code .at { color: #008080; }
+code .do { color: #969896; }
+code .an { color: #008080; }
+code .cv { color: #008080; }
+code .in { color: #008080; }
+</style>
+<style>
+body {
+  box-sizing: border-box;
+  min-width: 200px;
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 45px;
+  padding-top: 0px;
+}
+</style>
+
+</head>
+
+<body>
+
+<h1 id="lab-6-unix-filters-and-pipes">Lab 6: Unix Filters and Pipes</h1>
+<blockquote>
+<h3 id="learning-objectives">Learning Objectives:</h3>
+<ul>
+<li>Use Unix output redirection with <code>&gt;</code> and <code>&gt;&gt;</code></li>
+<li>Use Unix pipes with <code>|</code></li>
+<li>Use filters: <code>cut</code>, <code>paste</code>, <code>sort</code>, <code>uniq</code>, <code>grep</code></li>
+</ul>
+</blockquote>
+<h3 id="general-instructions">General Instructions</h3>
+<ul>
+<li>You DON’T need to use an <code>.Rmd</code> file for this lab</li>
+<li>Part of this lab involves writing code in an <code>R</code> script file.</li>
+<li>Name this file as <code>lab06-first-last.txt</code>, where <code>first</code> and <code>last</code> are your first and last names (e.g. <code>lab06-gaston-sanchez.txt</code>).</li>
+<li>Submit your <code>.txt</code> file to bCourses, in the corresponding lab assignment.</li>
+</ul>
+<h2 id="tents-data">Tents Data</h2>
+<p>In this lab you are going to use the data set <code>tents.csv</code> (a few rows shown below)</p>
+<pre><code>             name     brand  price weight height     bestuse  seasons capacity
+1   fly-creek-ul2 big-agnes 349.95    960     96 Backpacking 3-season 2-person
+2   fly-creek-ul3 big-agnes 449.95   1450    107 Backpacking 3-season 3-person
+3        salida-2     kelty 159.95   1700    102 Backpacking 3-season 2-person
+4 jack-rabbit-sl3 big-agnes 359.95   2160    107 Backpacking 3-season 3-person
+5       passage-2       rei 149.00   2210    107 Backpacking 3-season 2-person
+6 copper-spur-ul2 big-agnes 399.95   1530    107 Backpacking 3-season 2-person
+</code></pre>
+<p>Use the <code>tents.csv</code> data to perform the following tasks. All the commands have to be bash-shell commands (not R commands).</p>
+<ul>
+<li><code>cut</code> allows you to <em>select</em> columns</li>
+<li><code>paste</code> allows you to <em>merge</em> columns</li>
+<li><code>sort</code> can be used to <em>arrange</em> lines</li>
+<li><code>sort</code> can also be used to <em>group by</em> lines</li>
+<li><code>sort</code> and <code>uniq</code> can be used to <em>count</em> occurrences</li>
+<li><code>grep</code> allows you to <em>filter</em> rows</li>
+</ul>
+<h3 id="example-1-names-of-tents">Example 1) Names of Tents</h3>
+<p><strong>1.1)</strong> Here’s a pipeline to obtain the names of the first 5 tents in the data file. First we <code>cut</code> the second column (team names), then we skip the first row with <code>tail +2</code>, and finally we <code>head</code> the first 5 elements:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1"></a><span class="co"># display names of first 5 tents</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="fu">cut</span> -f 1 -d <span class="st">&quot;,&quot;</span> tents.csv <span class="kw">|</span> <span class="fu">tail</span> +2 <span class="kw">|</span> <span class="fu">head</span> -n 5</span></code></pre></div>
+<pre><code>## &quot;fly-creek-ul2&quot;
+## &quot;fly-creek-ul3&quot;
+## &quot;salida-2&quot;
+## &quot;jack-rabbit-sl3&quot;
+## &quot;passage-2&quot;
+</code></pre>
+<p><strong>1.2)</strong> We can use the previous pipeline, and redirect the output to a text file <code>names5.txt</code> using the output redirection operator <code>&gt;</code>.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1"></a><span class="co"># file with names of first 5 tents</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a><span class="fu">cut</span> -f 1 -d <span class="st">&quot;,&quot;</span> tents.csv <span class="kw">|</span> <span class="fu">tail</span> +2 <span class="kw">|</span> <span class="fu">head</span> -n 5 <span class="op">&gt;</span> names5.txt</span></code></pre></div>
+<p>To confirm that <code>names5.txt</code> has the tent names, we can use <code>head</code> to display the first five lines of the created file:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu">head</span> names5.txt</span></code></pre></div>
+<pre><code>## &quot;fly-creek-ul2&quot;
+## &quot;fly-creek-ul3&quot;
+## &quot;salida-2&quot;
+## &quot;jack-rabbit-sl3&quot;
+## &quot;passage-2&quot;
+</code></pre>
+<p><strong>1.3)</strong> We can take the pipeline above, and pipe it with <code>sort</code> so that we get the names sorted alphabetically</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1"></a><span class="co"># display names of first 5 tents, sorted alphabetically</span></span>
+<span id="cb7-2"><a href="#cb7-2"></a><span class="fu">cut</span> -f 1 -d <span class="st">&quot;,&quot;</span> tents.csv <span class="kw">|</span> <span class="fu">tail</span> +2 <span class="kw">|</span> <span class="fu">head</span> -n 5 <span class="kw">|</span> <span class="fu">sort</span></span></code></pre></div>
+<pre><code>## &quot;fly-creek-ul2&quot;
+## &quot;fly-creek-ul3&quot;
+## &quot;jack-rabbit-sl3&quot;
+## &quot;passage-2&quot;
+## &quot;salida-2&quot;
+</code></pre>
+<h4 id="your-turn">Your turn:</h4>
+<p><strong>1.4)</strong> Modify the previous pipe to get the names (of the first 5 tents) sorted alphabeticlly in decreasing order</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1"></a><span class="co"># display names of first 5 tents, sorted decreasingly</span></span>
+<span id="cb9-2"><a href="#cb9-2"></a><span class="fu">cut</span> -f 1 -d <span class="st">&quot;,&quot;</span> tents.csv <span class="kw">|</span> <span class="fu">tail</span> +2 <span class="kw">|</span> <span class="fu">head</span> -n 5 <span class="kw">|</span> <span class="fu">sort</span> -r</span></code></pre></div>
+<pre><code>## &quot;salida-2&quot;
+## &quot;passage-2&quot;
+## &quot;jack-rabbit-sl3&quot;
+## &quot;fly-creek-ul3&quot;
+## &quot;fly-creek-ul2&quot;
+</code></pre>
+<p><strong>1.5)</strong> Write a pipe to get the names of the last 5 tents (no sorting required)</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1"></a><span class="co"># display names of last 5 tents, sorted alphabetically</span></span>
+<span id="cb11-2"><a href="#cb11-2"></a><span class="fu">cut</span> -f 1 -d <span class="st">&quot;,&quot;</span> tents.csv <span class="kw">|</span> <span class="fu">tail</span> +2 <span class="kw">|</span> <span class="fu">tail</span> -n 5</span></code></pre></div>
+<pre><code>## &quot;trail-ridge-4&quot;
+## &quot;hula-house-6&quot;
+## &quot;docking-station&quot;
+## &quot;hacienda-6p&quot;
+## &quot;hula-house-4&quot;
+</code></pre>
+<p><strong>1.6)</strong> Write a pipe to get the <code>name</code> and <code>brand</code> of the first 5 tents</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1"></a><span class="co"># display names and prices of first 5 tents</span></span>
+<span id="cb13-2"><a href="#cb13-2"></a><span class="fu">cut</span> -f 1-2 -d <span class="st">&quot;,&quot;</span> tents.csv <span class="kw">|</span> <span class="fu">tail</span> +2 <span class="kw">|</span> <span class="fu">head</span> -n 5</span></code></pre></div>
+<pre><code>## &quot;fly-creek-ul2&quot;,&quot;big-agnes&quot;
+## &quot;fly-creek-ul3&quot;,&quot;big-agnes&quot;
+## &quot;salida-2&quot;,&quot;kelty&quot;
+## &quot;jack-rabbit-sl3&quot;,&quot;big-agnes&quot;
+## &quot;passage-2&quot;,&quot;rei&quot;
+</code></pre>
+<p><strong>1.7)</strong> Write a pipe to get the <code>name</code>, <code>bestuse</code>, and <code>capacity</code> of the last 5 tents</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1"></a><span class="co"># display name, bestuse, and capacity of last 5 tents</span></span>
+<span id="cb15-2"><a href="#cb15-2"></a><span class="fu">cut</span> -f 1,6,8 -d <span class="st">&quot;,&quot;</span> tents.csv <span class="kw">|</span> <span class="fu">tail</span> +2 <span class="kw">|</span> <span class="fu">tail</span> -n 5</span></code></pre></div>
+<pre><code>## &quot;trail-ridge-4&quot;,&quot;Carcamping&quot;,&quot;4-person&quot;
+## &quot;hula-house-6&quot;,&quot;Carcamping&quot;,&quot;6-person&quot;
+## &quot;docking-station&quot;,&quot;Carcamping&quot;,&quot;6-person&quot;
+## &quot;hacienda-6p&quot;,&quot;Carcamping&quot;,&quot;6-person&quot;
+## &quot;hula-house-4&quot;,&quot;Carcamping&quot;,&quot;4-person&quot;
+</code></pre>
+<h3 id="example-2-listing-and-counting-categories">Example 2) Listing and Counting Categories</h3>
+<p><strong>2.1)</strong> Often, we want to list unique values. For example, say we are interested in knowing which are the (unique) categories <code>bestuse</code>. We can pipe <code>sort</code> and <code>uniq</code> for this purpose. Here’s how:</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1"></a><span class="fu">cut</span> -f 6 -d <span class="st">&quot;,&quot;</span> tents.csv <span class="kw">|</span> <span class="fu">tail</span> +2 <span class="kw">|</span> <span class="fu">sort</span> <span class="kw">|</span> <span class="fu">uniq</span></span></code></pre></div>
+<pre><code>## &quot;Backpacking&quot;
+## &quot;Carcamping&quot;
+## &quot;Mountaineering&quot;
+</code></pre>
+<p><strong>2.2)</strong> What if, in addition to identify the unique categories, we want to obtain their frequencies (i.e. counts)? Then, simply add the option <code>-c</code> for <code>uniq</code></p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1"></a><span class="fu">cut</span> -f 6 -d <span class="st">&quot;,&quot;</span> tents.csv <span class="kw">|</span> <span class="fu">tail</span> +2 <span class="kw">|</span> <span class="fu">sort</span> <span class="kw">|</span> <span class="fu">uniq</span> -c</span></code></pre></div>
+<pre><code>##   59 &quot;Backpacking&quot;
+##   25 &quot;Carcamping&quot;
+##    6 &quot;Mountaineering&quot;
+</code></pre>
+<h4 id="your-turn-1">Your turn:</h4>
+<p><strong>2.3)</strong> Take the previous command and pipe it again with <code>sort</code> in order to display the categories (and their counts) in increasing order</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1"></a><span class="fu">cut</span> -f 6 -d <span class="st">&quot;,&quot;</span> tents.csv <span class="kw">|</span> <span class="fu">tail</span> +2 <span class="kw">|</span> <span class="fu">sort</span> <span class="kw">|</span> <span class="fu">uniq</span> -c <span class="kw">|</span> <span class="fu">sort</span></span></code></pre></div>
+<pre><code>##    6 &quot;Mountaineering&quot;
+##   25 &quot;Carcamping&quot;
+##   59 &quot;Backpacking&quot;
+</code></pre>
+<p><strong>2.4)</strong> Write a pipe to list (i.e. display) the unique categories of <code>seasons</code></p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1"></a><span class="fu">cut</span> -f 7 -d <span class="st">&quot;,&quot;</span> tents.csv <span class="kw">|</span> <span class="fu">tail</span> +2 <span class="kw">|</span> <span class="fu">sort</span> <span class="kw">|</span> <span class="fu">uniq</span></span></code></pre></div>
+<pre><code>## &quot;3-4-season&quot;
+## &quot;3-season&quot;
+## &quot;4-season&quot;
+</code></pre>
+<p><strong>2.5)</strong> Write a pipe to list (i.e. display) the unique categories of <code>seasons</code> and their counts</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1"></a><span class="fu">cut</span> -f 7 -d <span class="st">&quot;,&quot;</span> tents.csv <span class="kw">|</span> <span class="fu">tail</span> +2 <span class="kw">|</span> <span class="fu">sort</span> <span class="kw">|</span> <span class="fu">uniq</span> -c</span></code></pre></div>
+<pre><code>##    4 &quot;3-4-season&quot;
+##   78 &quot;3-season&quot;
+##    8 &quot;4-season&quot;
+</code></pre>
+<p><strong>2.6)</strong> Now let’s make things a bit more interesting: <code>cut</code> both <code>bestuse</code> and <code>seasons</code>, and pipe them to <code>sort</code> and <code>uniq</code> to get the counts for all possible combinations of categories from <code>bestuse</code> and <code>seasons</code></p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1"></a><span class="fu">cut</span> -f 6,7 -d <span class="st">&quot;,&quot;</span> tents.csv <span class="kw">|</span> <span class="fu">tail</span> +2 <span class="kw">|</span> <span class="fu">sort</span> <span class="kw">|</span> <span class="fu">uniq</span> -c</span></code></pre></div>
+<pre><code>##    3 &quot;Backpacking&quot;,&quot;3-4-season&quot;
+##   55 &quot;Backpacking&quot;,&quot;3-season&quot;
+##    1 &quot;Backpacking&quot;,&quot;4-season&quot;
+##    1 &quot;Carcamping&quot;,&quot;3-4-season&quot;
+##   23 &quot;Carcamping&quot;,&quot;3-season&quot;
+##    1 &quot;Carcamping&quot;,&quot;4-season&quot;
+##    6 &quot;Mountaineering&quot;,&quot;4-season&quot;
+</code></pre>
+<h3 id="example-3-selecting-rows">Example 3) Selecting Rows</h3>
+<p><strong>3.1)</strong> Another useful unix filter is <code>grep</code>. One basic use for this command is to match certain pattern. For example, here’s how to find (match) those rows of tents with brand <code>marmot</code>.</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1"></a><span class="fu">grep</span> <span class="st">&quot;marmot&quot;</span> tents.csv</span></code></pre></div>
+<p>We can pipe the previous command with <code>wc</code> to count how many <em>marmot</em> tents are in <code>tents.csv</code> (i.e. counting number of lines):</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb30-1"><a href="#cb30-1"></a><span class="co"># how many marmot tents</span></span>
+<span id="cb30-2"><a href="#cb30-2"></a><span class="fu">grep</span> <span class="st">&quot;marmot&quot;</span> tents.csv <span class="kw">|</span> <span class="fu">wc</span> -l</span></code></pre></div>
+<pre><code>##       10
+</code></pre>
+<p><strong>3.2)</strong> If you want to create a file with the data for <code>marmot</code> tents, you can redirect the output to a text file <code>marmot-tents.csv</code>:</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb32-1"><a href="#cb32-1"></a><span class="fu">grep</span> <span class="st">&quot;marmot&quot;</span> tents.csv <span class="op">&gt;</span> marmot-tents.csv</span></code></pre></div>
+<p>Notice that the created file <code>marmot.csv</code> does NOT contain names of columns in the first row. If you want the file to include column names, you need to write two commands like so:</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb33-1"><a href="#cb33-1"></a><span class="fu">head</span> -n 1 tents.csv <span class="op">&gt;</span> marmot-tents.csv</span>
+<span id="cb33-2"><a href="#cb33-2"></a><span class="fu">grep</span> <span class="st">&quot;marmot&quot;</span> tents.csv <span class="op">&gt;&gt;</span> marmot-tents.csv</span></code></pre></div>
+<h3 id="your-turn-2">Your Turn</h3>
+<p><strong>3.3)</strong> Pipe <code>grep</code> with <code>wc</code> to count the number of tents from brand <code>rei</code></p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb34-1"><a href="#cb34-1"></a><span class="fu">grep</span> <span class="st">&quot;rei&quot;</span> tents.csv <span class="kw">|</span> <span class="fu">wc</span> -l</span></code></pre></div>
+<pre><code>##       22
+</code></pre>
+<p><strong>3.4)</strong> Write a similar pipe to the one above to find how many <code>Backpacking</code> tents are in <code>tents.csv</code></p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb36-1"><a href="#cb36-1"></a><span class="fu">grep</span> <span class="st">&quot;Backpacking&quot;</span> tents.csv <span class="kw">|</span> <span class="fu">wc</span> -l</span></code></pre></div>
+<pre><code>##       59
+</code></pre>
+<p><strong>3.5)</strong> Write a pipe to create a file <code>big-agnes-tents.csv</code> containing the data for tents of brand <code>big-agnes</code>:</p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb38-1"><a href="#cb38-1"></a><span class="fu">grep</span> <span class="st">&quot;big-agnes&quot;</span> tents.csv <span class="op">&gt;</span> big-agnes-tents.csv</span></code></pre></div>
+<p><strong>3.6)</strong> Write commands to create a file <code>kelty-tents.csv</code> containing the data for tents of brand <code>kelty</code>, arranged by name alphabetically. This file should have column names in the first line (i.e. first row).</p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb39-1"><a href="#cb39-1"></a><span class="fu">head</span> -n 1 tents.csv <span class="op">&gt;</span> big-agnes-tents.csv</span>
+<span id="cb39-2"><a href="#cb39-2"></a><span class="fu">grep</span> <span class="st">&quot;big-agnes&quot;</span> tents.csv <span class="kw">|</span> <span class="fu">sort</span> <span class="op">&gt;&gt;</span> big-agnes-tents.csv</span></code></pre></div>
+<h3 id="4-more-pipes-your-turn">4) More Pipes (your turn)</h3>
+<p><strong>4.1)</strong> Write a pipeline to obtain the unique categories of <code>bestuse</code> (column 6). The output of the pipeline should contain only the categories (NOT the counts). <em>HINT:</em> <code>cut</code>, <code>sort</code>, and <code>uniq</code> are your friends.</p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb40-1"><a href="#cb40-1"></a><span class="fu">cut</span> -f 6 -d <span class="st">&quot;,&quot;</span> tents.csv <span class="kw">|</span> <span class="fu">tail</span> +2 <span class="kw">|</span> <span class="fu">sort</span> <span class="kw">|</span> <span class="fu">uniq</span></span></code></pre></div>
+<p><strong>4.2)</strong> Write a pipeline to obtain the counts (i.e. frequencies) of the different <code>bestuse</code> values (column 6), displayed from largest to smallest (i.e. descending order). The first column corresponds to count, the second column corresponds to experience. Redirect the output to a text file <code>bestuse-counts.txt</code>. A <em>HINT:</em> <code>cut</code>, <code>tail</code>, <code>sort</code>, <code>uniq</code>; and redirection <code>&gt;</code> operator, are your friends.</p>
+<div class="sourceCode" id="cb41"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb41-1"><a href="#cb41-1"></a><span class="fu">cut</span> -f 6 -d <span class="st">&quot;,&quot;</span> tents.csv <span class="kw">|</span> <span class="fu">tail</span> +2 <span class="kw">|</span> <span class="fu">sort</span> <span class="kw">|</span> <span class="fu">uniq</span> -c</span></code></pre></div>
+<p><strong>4.3)</strong> Use output redirection commands to create a CSV file <code>msr-tents.csv</code> containing data for the <code>msr</code> brand. Your CSV file should include column names in the first row. <em>HINT:</em> redirection operators <code>&gt;</code> and <code>&gt;&gt;</code>, as well as <code>head</code> and <code>grep</code> are your friends.</p>
+<div class="sourceCode" id="cb42"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb42-1"><a href="#cb42-1"></a><span class="fu">head</span> -n 1 tents.csv <span class="op">&gt;</span> msr-tents.csv</span>
+<span id="cb42-2"><a href="#cb42-2"></a><span class="fu">grep</span> <span class="st">&quot;msr&quot;</span> tents.csv <span class="op">&gt;&gt;</span> msr-tents.csv</span></code></pre></div>
+<p><strong>4.4)</strong> Use the previously created file <code>msr-tents.csv</code> to select, separately, the columns <code>name</code>, <code>weight</code>, and <code>price</code>. Store each column in a text file: <code>name.txt</code>, <code>weight.txt</code>, and <code>price.txt</code></p>
+<div class="sourceCode" id="cb43"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb43-1"><a href="#cb43-1"></a><span class="fu">cut</span> -f 1 -d <span class="st">&quot;,&quot;</span> msr-tents.csv <span class="op">&gt;</span> name.txt</span>
+<span id="cb43-2"><a href="#cb43-2"></a><span class="fu">cut</span> -f 4 -d <span class="st">&quot;,&quot;</span> msr-tents.csv <span class="op">&gt;</span> weight.txt</span>
+<span id="cb43-3"><a href="#cb43-3"></a><span class="fu">cut</span> -f 3 -d <span class="st">&quot;,&quot;</span> msr-tents.csv <span class="op">&gt;</span> salary.txt</span></code></pre></div>
+<p><strong>4.5)</strong> Use the previously created files <code>name.txt</code>, <code>weight.txt</code>, and <code>price.txt</code> to <code>paste</code> them (i.e. merge them), in that order, into a new CSV file <code>msr-prices.csv</code> (comma separated values!!!).</p>
+<div class="sourceCode" id="cb44"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb44-1"><a href="#cb44-1"></a><span class="ex">paste</span> -d <span class="st">&quot;,&quot;</span> name.txt weight.txt salary.txt <span class="op">&gt;</span> msr-prices.csv</span></code></pre></div>
+<p><strong>4.6)</strong> Write a pipeline to list (display) the five largest prices in decrasing order.</p>
+<div class="sourceCode" id="cb45"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb45-1"><a href="#cb45-1"></a><span class="fu">cut</span> -f 3 -d <span class="st">&quot;,&quot;</span> tents.csv <span class="kw">|</span> <span class="fu">tail</span> +2 <span class="kw">|</span> <span class="fu">sort</span> -r -n <span class="kw">|</span> <span class="fu">head</span> -n 5</span></code></pre></div>
+<p><strong>4.7)</strong> Write pipelines to create a file <code>top10-tents.csv</code> containing the top10 tents by <code>price</code> from largest to smallest. Your CSV file should include tent <code>name</code>, <code>brand</code>, <code>price</code>.</p>
+<div class="sourceCode" id="cb46"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb46-1"><a href="#cb46-1"></a><span class="fu">head</span> -n 1 tents.csv <span class="op">&gt;</span> top10-tents.csv</span>
+<span id="cb46-2"><a href="#cb46-2"></a><span class="fu">cut</span> -f 1-3 -d <span class="st">&quot;,&quot;</span> tents.csv <span class="kw">|</span> <span class="fu">tail</span> +2 <span class="kw">|</span> <span class="fu">sort</span> -k 3 -t <span class="st">&quot;,&quot;</span> -r -n <span class="kw">|</span> <span class="fu">head</span> -n 10 <span class="op">&gt;&gt;</span> top10-tents.csv</span></code></pre></div>
+<br>
+
+<h2 id="cheat-sheet-unix-filters">Cheat sheet: Unix filters</h2>
+<table>
+<thead>
+<tr class="header">
+<th>Command</th>
+<th>Description</th>
+<th>R alternative</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>wc nba2017-players.csv</code></td>
+<td>count lines, words, and bytes</td>
+<td><code>object.size()</code>, <code>nrow()</code></td>
+</tr>
+<tr class="even">
+<td><code>wc -l nba2017-players.csv</code></td>
+<td>count number of lines</td>
+<td><code>nrow()</code></td>
+</tr>
+<tr class="odd">
+<td><code>head nba2017-players.csv</code></td>
+<td>inspect first 10 rows</td>
+<td><code>head()</code></td>
+</tr>
+<tr class="even">
+<td><code>tail nba2017-players.csv</code></td>
+<td>inspect last 10 rows</td>
+<td><code>tail()</code></td>
+</tr>
+<tr class="odd">
+<td><code>less nba2017-players.csv</code></td>
+<td>see contents with a paginator</td>
+<td><code>View()</code></td>
+</tr>
+</tbody>
+</table>
+<p>Extracting columns with <strong><code>cut</code></strong></p>
+<table>
+<thead>
+<tr class="header">
+<th>Option</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>-f</code> 1,5</td>
+<td>return columns 1 and 5, delimited by tabs.</td>
+</tr>
+<tr class="even">
+<td><code>-f</code> 1,5</td>
+<td>return columns 1 through 5, delimited by tabs.</td>
+</tr>
+<tr class="odd">
+<td><code>-d &quot;,&quot;</code></td>
+<td>use commas as the delimiters.</td>
+</tr>
+<tr class="even">
+<td><code>-c 2-7</code></td>
+<td>return characters 2 through 7 from the file.</td>
+</tr>
+</tbody>
+</table>
+<p>Sorting lines with <strong><code>sort</code></strong></p>
+<table>
+<thead>
+<tr class="header">
+<th>Option</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>-n</code></td>
+<td>sort in numerical order rather than alphabetically.</td>
+</tr>
+<tr class="even">
+<td><code>-r</code></td>
+<td>sort in reverse order, z to a or decreasing numbers.</td>
+</tr>
+<tr class="odd">
+<td><code>-f</code></td>
+<td>fold uppercase into lowercase (i.e. ignore case).</td>
+</tr>
+<tr class="even">
+<td><code>-u</code></td>
+<td>return a unique representative of repeated items.</td>
+</tr>
+<tr class="odd">
+<td><code>-k 3</code></td>
+<td>sort lines based on column 3 (tab or space delimiters)</td>
+</tr>
+<tr class="even">
+<td><code>-t &quot;,&quot;</code></td>
+<td>use commas for delimiters.</td>
+</tr>
+<tr class="odd">
+<td><code>-b</code></td>
+<td>ignore leading blanks.</td>
+</tr>
+<tr class="even">
+<td><code>-d</code></td>
+<td>sort in dictionary order.</td>
+</tr>
+</tbody>
+</table>
+<p>Isolating unique lines with <strong><code>uniq</code></strong></p>
+<table>
+<thead>
+<tr class="header">
+<th>Option</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>-c</code></td>
+<td>adds a count of how many times each line occurred.</td>
+</tr>
+<tr class="even">
+<td><code>-u</code></td>
+<td>lists only lines that are not repeated.</td>
+</tr>
+<tr class="odd">
+<td><code>-d</code></td>
+<td>lists only lines that are duplicated.</td>
+</tr>
+<tr class="even">
+<td><code>-i</code></td>
+<td>ignore case when determining uniqueness</td>
+</tr>
+<tr class="odd">
+<td><code>-f 4</code></td>
+<td>ignore the first 4 fields (space delimiter)</td>
+</tr>
+</tbody>
+</table>
+
+</body>
+</html>

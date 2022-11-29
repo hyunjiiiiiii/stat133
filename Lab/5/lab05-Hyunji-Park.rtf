@@ -1,0 +1,290 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2636
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset0 HelveticaNeue-Medium;\f1\fnil\fcharset0 HelveticaNeue;\f2\fmodern\fcharset0 Courier;
+\f3\fnil\fcharset129 AppleSDGothicNeo-Regular;}
+{\colortbl;\red255\green255\blue255;\red38\green38\blue38;\red0\green0\blue0;\red38\green38\blue38;
+\red255\green255\blue255;\red0\green0\blue0;\red41\green101\blue168;}
+{\*\expandedcolortbl;;\cssrgb\c20000\c20000\c20000;\cssrgb\c0\c0\c0\c3922;\cssrgb\c20022\c20022\c19997;
+\cssrgb\c100000\c100000\c100000\c0;\csgray\c0;\cssrgb\c20000\c47843\c71765;}
+\margl1440\margr1440\vieww13720\viewh9460\viewkind0
+\deftab720
+\pard\pardeftab720\sa200\partightenfactor0
+
+\f0\fs60 \cf2 \expnd0\expndtw0\kerning0
+2) Lab Directory\
+
+\f1\fs28 - Use the command \cb3 pwd\cb1  to see what\'92s your current directory\
+pwd\
+- Use \cb3 mkdir\cb1  to create a new directory \cb3 stat133-lab05\cf4 \cb5 \
+mkdir stat133-lab05\
+-\cf2 \cb1 Change directory to \cb3 stat133-lab05\cf4 \cb5 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab720\sa200\pardirnatural\partightenfactor0
+\cf6 \cb1 \kerning1\expnd0\expndtw0 \CocoaLigature0 cd stat133-lab05\cf4 \cb5 \expnd0\expndtw0\kerning0
+\CocoaLigature1 \
+- \cf2 \cb1 Use the command \cb3 curl\cb1  to download the following text file:\
+\pard\pardeftab720\sa200\partightenfactor0
+\cf4 \cb5 curl -O http://textfiles.com/food/bread.txt\
+-\cf2 \cb1 Use the command 
+\f2\fs25\fsmilli12600 \cb3 ls
+\f1\fs28 \cb1  to list the contents in your current directory\
+\cf4 \cb5 curl -O \cf7 \cb1 http://textfiles.com/food/btaco.txt\cf4 \cb5 \
+curl -O \cf7 \cb1 http://textfiles.com/food/1st_aid.txt\cf4 \cb5 \
+curl -O \cf7 \cb1 http://textfiles.com/food/beesherb.txt\cf4 \cb5 \
+curl -O \cf7 \cb1 http://textfiles.com/food/bakebred.txt\
+\cf2 -Use the command 
+\f2\fs25\fsmilli12600 \cb3 curl
+\f1\fs28 \cb1  to download the following csv files:\
+\cf4 \cb5 curl -O \cf7 \cb1 http://archive.ics.uci.edu/ml/machine-learning-databases/forest-fires/forestfires.csv\cf4 \cb5 \
+curl -O \cf7 \cb1 http://web.pdx.edu/~gerbing/data/cars.csv\cf4 \cb5 \
+curl -O \cf7 \cb1 http://web.pdx.edu/~gerbing/data/color.csv\cf4 \cb5 \
+curl -O \cf7 \cb1 http://web.pdx.edu/~gerbing/data/snow.csv\cf4 \cb5 \
+curl -O \cf7 \cb1 http://web.pdx.edu/~gerbing/data/mid1.csv\cf4 \cb5 \
+curl -O \cf7 \cb1 http://web.pdx.edu/~gerbing/data/mid2.csv\cf4 \cb5 \
+curl -O \cf7 \cb1 http://web.pdx.edu/~gerbing/data/minutes1.csv\cf4 \cb5 \
+curl -O \cf7 \cb1 http://web.pdx.edu/~gerbing/data/minutes2.csv\
+\
+\pard\pardeftab720\sa200\partightenfactor0
+
+\f0\fs48 \cf2 2.1) Inspecting a Directory\
+\pard\pardeftab720\sa200\partightenfactor0
+
+\f3\fs28 \cf2 -
+\f1 Use the command 
+\f2\fs25\fsmilli12600 \cb3 ls
+\f1\fs28 \cb1  to list the contents in your current directory\
+ls\
+-Now try 
+\f2\fs25\fsmilli12600 \cb3 ls -l
+\f1\fs28 \cb1  to list the contents in your current directory in long format\
+ls -1\
+-Look at the 
+\f2\fs25\fsmilli12600 \cb3 man
+\f1\fs28 \cb1  documentation of 
+\f2\fs25\fsmilli12600 \cb3 ls
+\f1\fs28 \cb1  to find out how to list the contents in reverse order\
+ls -r -man\
+-How would you list the contents in long format arranged by time?\
+ls -1t\
+\pard\pardeftab720\sa200\partightenfactor0
+\cf4 \cb5 -Find out how to use the wildcard * to list all the files with extension .txt\
+ls -r *.txt\
+-\cf2 \cb1 Use the wildcard 
+\f2\fs25\fsmilli12600 \cb3 *
+\f1\fs28 \cb1  to list all the files with extension 
+\f2\fs25\fsmilli12600 \cb3 .csv
+\f1\fs28 \cb1  in reverse order\
+ls -r *.csv\
+-You can use the character 
+\f2\fs25\fsmilli12600 \cb3 ?
+\f1\fs28 \cb1  to represent a single character: e.g.\'a0
+\f2\fs25\fsmilli12600 \cb3 ls mid?.csv
+\f1\fs28 \cb1 . Find out how to use the wilcard 
+\f2\fs25\fsmilli12600 \cb3 ?
+\f1\fs28 \cb1  to list 
+\f2\fs25\fsmilli12600 \cb3 .csv
+\f1\fs28 \cb1  files with names made of 4 characters (e.g.\'a0
+\f2\fs25\fsmilli12600 \cb3 mid1.csv
+\f1\fs28 \cb1 , 
+\f2\fs25\fsmilli12600 \cb3 snow.csv
+\f1\fs28 \cb1 )\
+\cf4 \cb5 ls ????.csv\
+-\cf2 \cb1 The command 
+\f2\fs25\fsmilli12600 \cb3 ls *[1]*.csv
+\f1\fs28 \cb1  should list 
+\f2\fs25\fsmilli12600 \cb3 .csv
+\f1\fs28 \cb1  files with names containing the number 1 (e.g.\'a0
+\f2\fs25\fsmilli12600 \cb3 mid1.csv
+\f1\fs28 \cb1 , 
+\f2\fs25\fsmilli12600 \cb3 minutes1.csv
+\f1\fs28 \cb1 ). Adapt the command to list 
+\f2\fs25\fsmilli12600 \cb3 .csv
+\f1\fs28 \cb1  files with names containing the number 2.\
+ls *[2]*.csv\
+-Find out how to list files with names containing any number.\
+ls *[0-9]*.csv\
+-Invoke the command 
+\f2\fs25\fsmilli12600 \cb3 history
+\f1\fs28 \cb1  and see what happens.\
+The commands I entered come out.\
+\
+\pard\pardeftab720\sa200\partightenfactor0
+
+\f0\fs48 \cf2 2.2) Moving Files
+\f1\fs28 \
+-Inside 
+\f2\fs25\fsmilli12600 \cb3 stat133-lab05
+\f1\fs28 \cb1  create a directory 
+\f2\fs25\fsmilli12600 \cb3 data
+\f1\fs28 \cf4 \cb5 \
+mkdir data
+\f3 \cf4 \
+-
+\f1 \cf2 \cb1 Change directory to 
+\f2\fs25\fsmilli12600 \cb3 data
+\f3\fs28 \cf4 \cb5 \
+cd data\
+\pard\pardeftab720\sa200\partightenfactor0
+
+\f1 \cf4 -\cf2 \cb1 Create a directory 
+\f2\fs25\fsmilli12600 \cb3 txt-files
+\f1\fs28 \cf4 \cb5 \
+mkdir txt-files\
+-\cf2 \cb1 Create a directory 
+\f2\fs25\fsmilli12600 \cb3 csv-files
+\f1\fs28 \cf4 \cb5 \
+mkdir csv-files\
+-\cf2 \cb1 Use the command 
+\f2\fs25\fsmilli12600 \cb3 mv
+\f1\fs28 \cb1  to move the 
+\f2\fs25\fsmilli12600 \cb3 bread.txt
+\f1\fs28 \cb1  file to the folder 
+\f2\fs25\fsmilli12600 \cb3 txt-files
+\f1\fs28 \cb1 . Without changing directories, use 
+\f2\fs25\fsmilli12600 \cb3 ls
+\f1\fs28 \cb1  to confirm that 
+\f2\fs25\fsmilli12600 \cb3 bread.txt
+\f1\fs28 \cb1  is now inside 
+\f2\fs25\fsmilli12600 \cb3 txt-files
+\f1\fs28 \cb1 .\
+mv  ../bread.txt txt-files\
+-Use the wildcard 
+\f2\fs25\fsmilli12600 \cb3 *
+\f1\fs28 \cb1  to move all the 
+\f2\fs25\fsmilli12600 \cb3 .txt
+\f1\fs28 \cb1  files to the directory 
+\f2\fs25\fsmilli12600 \cb3 txt-files
+\f1\fs28 \cb1 . Without changing directories, use 
+\f2\fs25\fsmilli12600 \cb3 ls
+\f1\fs28 \cb1  to confirm that all the 
+\f2\fs25\fsmilli12600 \cb3 .txt
+\f1\fs28 \cb1  files are inside 
+\f2\fs25\fsmilli12600 \cb3 txt-files
+\f1\fs28 \cb1 .\cf4 \cb5 \
+mv ../*.txt txt-files\
+-\cf2 \cb1 Use the wildcard 
+\f2\fs25\fsmilli12600 \cb3 *
+\f1\fs28 \cb1  to move all the 
+\f2\fs25\fsmilli12600 \cb3 .csv
+\f1\fs28 \cb1  files to the directory 
+\f2\fs25\fsmilli12600 \cb3 csv-files
+\f1\fs28 \cb1 . Without changing directories, use 
+\f2\fs25\fsmilli12600 \cb3 ls
+\f1\fs28 \cb1  to confirm that all the 
+\f2\fs25\fsmilli12600 \cb3 .csv
+\f1\fs28 \cb1  files are inside 
+\f2\fs25\fsmilli12600 \cb3 csv-files
+\f1\fs28 \cb1 .\
+mv ../*.csv csv-files\
+\
+\pard\pardeftab720\sa200\partightenfactor0
+
+\f0\fs48 \cf2 2.3) Copying Files
+\f1\fs28 \cf4 \cb5 \
+-\cf2 \cb1 Go back to the parent directory 
+\f2\fs25\fsmilli12600 \cb3 stat133-lab05
+\f1\fs28 \cf4 \cb5 \
+cd ~/stat133-lab05\
+-\cf2 \cb1 Create a directory 
+\f2\fs25\fsmilli12600 \cb3 copies
+\f1\fs28 \cf4 \cb5 \
+mkdir copies\
+-\cf2 \cb1 Use the command 
+\f2\fs25\fsmilli12600 \cb3 cp
+\f1\fs28 \cb1  to copy the 
+\f2\fs25\fsmilli12600 \cb3 bread.txt
+\f1\fs28 \cb1  file (the one inside the folder 
+\f2\fs25\fsmilli12600 \cb3 txt-files
+\f1\fs28 \cb1 ) to the 
+\f2\fs25\fsmilli12600 \cb3 copies
+\f1\fs28 \cb1  directory\
+cp data/txt-files/bread.txt copies\
+-Without changing directories, use 
+\f2\fs25\fsmilli12600 \cb3 ls
+\f1\fs28 \cb1  to confirm that 
+\f2\fs25\fsmilli12600 \cb3 bread.txt
+\f1\fs28 \cb1  is now inside 
+\f2\fs25\fsmilli12600 \cb3 copies
+\f1\fs28 \cb1 .\
+ls copies\
+-Use the wildcard 
+\f2\fs25\fsmilli12600 \cb3 *
+\f1\fs28 \cb1  to copy all the 
+\f2\fs25\fsmilli12600 \cb3 .txt
+\f1\fs28 \cb1  files in the directory 
+\f2\fs25\fsmilli12600 \cb3 copies
+\f1\fs28 \cf4 \cb5 \
+cp data/txt-files/*.txt copies\
+-\cf2 \cb1 Without changing directories, use 
+\f2\fs25\fsmilli12600 \cb3 ls
+\f1\fs28 \cb1  to confirm that all the 
+\f2\fs25\fsmilli12600 \cb3 .txt
+\f1\fs28 \cb1  files are now inside 
+\f2\fs25\fsmilli12600 \cb3 copies
+\f1\fs28 \cb1 .\
+ls copies\
+-Use the wildcard 
+\f2\fs25\fsmilli12600 \cb3 *
+\f1\fs28 \cb1  to copy all the 
+\f2\fs25\fsmilli12600 \cb3 .csv
+\f1\fs28 \cb1  files in the directory 
+\f2\fs25\fsmilli12600 \cb3 copies
+\f1\fs28 \cf4 \cb5 \
+cp data/csv-files/*.csv copies\
+\
+
+\f0\fs48 \cf2 \cb1 2.4) Renaming and Deleting Files
+\f1\fs28 \cf4 \cb5 \
+\pard\pardeftab720\sa200\partightenfactor0
+\cf2 \cb1 -Change to the directory 
+\f2\fs25\fsmilli12600 \cb3 copies
+\f1\fs28 \cf4 \cb5 \
+cd copies\
+-\cf2 \cb1 Use the command 
+\f2\fs25\fsmilli12600 \cb3 mv
+\f1\fs28 \cb1  to rename the file 
+\f2\fs25\fsmilli12600 \cb3 bread.txt
+\f1\fs28 \cb1  as 
+\f2\fs25\fsmilli12600 \cb3 bread-recipe.txt
+\f1\fs28 \cf4 \cb5 \
+mv bread.txt bread-recipe.txt\
+-\cf2 \cb1 Rename the file 
+\f2\fs25\fsmilli12600 \cb3 cars.csv
+\f1\fs28 \cb1  as 
+\f2\fs25\fsmilli12600 \cb3 autos.csv
+\f1\fs28 \cf4 \cb5 \
+mv cars.csv autos.csv\
+-\cf2 \cb1 Rename the file 
+\f2\fs25\fsmilli12600 \cb3 btaco.txt
+\f1\fs28 \cb1  as 
+\f2\fs25\fsmilli12600 \cb3 breakfast-taco.txt
+\f1\fs28 \cf4 \cb5 \
+mv btaco.txt breakfast-taco.txt\
+-\cf2 \cb1 Change to the parent directory (i.e.\'a0
+\f2\fs25\fsmilli12600 \cb3 stat133-lab05
+\f1\fs28 \cb1 )\
+cd ..\
+-Rename the directory 
+\f2\fs25\fsmilli12600 \cb3 copies
+\f1\fs28 \cb1  as 
+\f2\fs25\fsmilli12600 \cb3 copy-files
+\f1\fs28 \cf4 \cb5 \
+mv copies copy-files\
+-\cf2 \cb1 Find out how to use the 
+\f2\fs25\fsmilli12600 \cb3 rm
+\f1\fs28 \cb1  command to delete the 
+\f2\fs25\fsmilli12600 \cb3 .csv
+\f1\fs28 \cb1  files that are in 
+\f2\fs25\fsmilli12600 \cb3 copy-files
+\f1\fs28 \cf4 \cb5 \
+rm copy-files/*.csv\
+-\cf2 \cb1 Find out how to use the 
+\f2\fs25\fsmilli12600 \cb3 rm
+\f1\fs28 \cb1  command to delete the directory 
+\f2\fs25\fsmilli12600 \cb3 copy-files
+\f1\fs28 \cf4 \cb5 \
+rm copy-files/*\
+rmdir copy-files\
+-\cf2 \cb1 List the contents of the directory 
+\f2\fs25\fsmilli12600 \cb3 txt-files
+\f1\fs28 \cb1  displaying the results in reverse (alphabetical) order\
+cd data/txt-files\
+ls -r}
